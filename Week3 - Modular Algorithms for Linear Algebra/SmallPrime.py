@@ -40,7 +40,9 @@ def bezout(a, b):
 #############################################################
 A = np.array([[4, 5], [6, -7]])
 h = hadamard_bound(A)
+print('hadamard_bound',h)
 p = find_primes(h)
+print('primes',p)
 
 #for all elements in the array p, create matrices that are the same size as A and mod them with the prime number and assign it to an array
 mod_matrices = []
@@ -70,13 +72,18 @@ print('M_mi is:', M_mi)
 bezout_coeff = []
 for i in range(0, len(p)):
     bezout_coeff.append(bezout(M_mi[i], p[i]))
+print('bezout_coeff is:', bezout_coeff)
 
 #find the sum of the determinent of the mod matrix times the bezout coefficient times the product of all the primes divided by each prime
 sum = 0
 for i in range(0, len(p)):
     sum += det_mod_matrices[i] * bezout_coeff[i][0] * M_mi[i]
+print('sum is:', sum)
 
-#find the final determinent of the matrix
-det_A_cal = sum % M
-print(round(det_A_cal))
+var = sum % M
+#X = var (Mod M)
+#find the array of X that satisfies x = var (Mod M)
+# 210 x + 152
 
+cal_det_A = min(M * 1 + var , M * -1 + var)
+print('cal_det_A is:', cal_det_A)
