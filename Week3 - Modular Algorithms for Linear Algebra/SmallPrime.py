@@ -85,5 +85,8 @@ var = sum % M
 #find the array of X that satisfies x = var (Mod M)
 # 210 x + 152
 
-cal_det_A = min(M * 1 + var , M * -1 + var)
+if abs(M * 1 + var) < abs(M * -1 + var):
+    cal_det_A = M * 1 + var
+else:
+    cal_det_A = M * -1 + var
 print('cal_det_A is:', cal_det_A)
