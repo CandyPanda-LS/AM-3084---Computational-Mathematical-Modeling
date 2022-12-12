@@ -44,11 +44,23 @@ def bezout(a, b):
 
 
 
-# # define a 2x2 matrix using np
-# A = np.array([[4, 5], [6, -7]])
-# h = hadamard_bound(A)
-# p = find_prime(h)
-# det_A_mod = det(mod_matrix(A,p))
-# print(det_A_mod)
+# define a 2x2 matrix using np
+A = np.array([[4, 5], [6, -7]])
+print('A =', A)
+h = hadamard_bound(A)
+print('hadamard_bound',h)
+p = find_prime(h)
+print('prime',p)
+det_A_mod = det(mod_matrix(A,p))
+print('det(A) mod p =', det_A_mod)
+var = det_A_mod % p
+print('var =', var)
+# X = var ( mod p)
+# X = 197 x Z + 139
 
-print(bezout(141,199))
+if abs(p * 1 + var) < abs(p * -1 + var):
+    cal_det_A = p * 1 + var
+else:
+    cal_det_A = p * -1 + var
+print('cal_det_A is:', cal_det_A)
+
